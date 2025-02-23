@@ -14,7 +14,6 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "67b4d3109bfdb27c89dc4dde",
   "plugins": [
     {
       "plugin": "@nx/webpack/plugin",
@@ -36,20 +35,15 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      },
-      "exclude": [
-        "apps/jobber-auth-e2e/**/*",
-        "apps/jobber-jobs-e2e/**/*",
-        "apps/jobber-executor-e2e/**/*"
-      ]
+      }
     }
   ],
   "targetDefaults": {
     "build": {
       "inputs": [
         "{projectRoot}/**/*",
-        "{workspaceRoot}/lib/**/*}",
-        "{workspaceRoot}/proto/*}"
+        "{workspaceRoot}/lib/**/*",
+        "{workspaceRoot}/proto/*"
       ],
       "options": {
         "assets": [
