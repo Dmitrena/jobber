@@ -55,3 +55,19 @@ jobs:
   image: '057116648205.dkr.ecr.eu-central-1.amazonaws.com/jobber/jobs:latest'
   port: 3001
 
+executor:
+  enabled: true
+  replicas: 1
+  image: '057116648205.dkr.ecr.eu-central-1.amazonaws.com/jobber/executor:latest'
+  port: 3002
+
+auth:
+  enabled: true
+  replicas: 1
+  image: '057116648205.dkr.ecr.eu-central-1.amazonaws.com/jobber/auth:latest'
+  port:
+    http: 3000
+    grpc: 5000
+  jwt:
+   secret: 48zeBK4dfDH2qjCI9Z1iTq8XkfKcBxLj
+   expirationMs: "28800000"
