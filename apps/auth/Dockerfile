@@ -3,7 +3,7 @@ FROM node:18-slim AS builder
 
 WORKDIR /workspace
 
-RUN apt-get update -y && apt-get install -y openssl
+RUN apt-get update && apt-get install -y openssl protobuf-compiler
 
 # Copy necessary files for building the app
 COPY package*.json ./
@@ -11,7 +11,7 @@ COPY nx.json ./
 COPY tsconfig*.json ./
 COPY jest.config.ts ./
 COPY jest.preset.js ./
-COPY .eslintrc.json ./
+COPY eslint.config.mjs ./
 COPY webpack.*.config.js ./
 
 COPY apps/auth ./apps/auth
@@ -29,7 +29,7 @@ RUN npx nx build auth
 # Runner Stage
 FROM node:18-slim AS runner
 
-RUN apt-get update -y && apt-get install -y openssl
+RUN apt-get update && apt-get install -y openssl protobuf-compiler
 
 WORKDIR /app
 
