@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "dependencies": {
     "drizzle-orm": "^0.40.0",
-    "pg": "^8.13.3"
+    "pg": "^8.13.3",
+    "drizzle-kit": "^0.30.5"
   },
   "devDependencies": {
-    "@types/pg": "^8.11.11",
-    "drizzle-kit": "^0.30.5"
+    "@types/pg": "^8.11.11"
   }
 }
