@@ -13,7 +13,6 @@ COPY webpack.*.config.js ./
 COPY apps/products ./apps/products
 COPY libs/grpc ./libs/grpc
 COPY libs/nestjs ./libs/nestjs
-COPY libs/pulsar ./libs/pulsar
 
 RUN npm install
 
@@ -27,10 +26,9 @@ WORKDIR /app
 
 COPY --from=builder /workspace/package.json ./
 COPY --from=builder /workspace/apps/products/package.json ./apps/products/package.json
+COPY --from=builder /workspace/libs/grpc/package.json ./libs/grpc/package.json
 COPY --from=builder /workspace/apps/products/drizzle.config.ts ./apps/products/drizzle.config.ts
 COPY --from=builder /workspace/apps/products/drizzle ./apps/products/drizzle
-COPY --from=builder /workspace/libs/grpc/package.json ./libs/grpc/package.json
-COPY --from=builder /workspace/libs/pulsar/package.json ./libs/pulsar/package.json
 COPY --from=builder /workspace/package-lock.json ./
 
 ENV NODE_ENV=production
