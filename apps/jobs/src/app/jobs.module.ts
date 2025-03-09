@@ -9,11 +9,14 @@ import { join } from 'path';
 import { PulsarModule } from '@jobber/pulsar';
 import { FibonacciJob } from './jobs/fibonacci/fibonacci.job';
 import { LoadProductJob } from './jobs/products/load-products.job';
+import { PrismaModule } from './prisma/prisma.module';
+import { JobsController } from './jobs.controller';
 
 @Module({
   imports: [
     DiscoveryModule,
     PulsarModule,
+    PrismaModule,
     ClientsModule.registerAsync([
       {
         name: Packages.AUTH,
@@ -30,6 +33,7 @@ import { LoadProductJob } from './jobs/products/load-products.job';
     ]),
   ],
   providers: [FibonacciJob, JobsService, JobsResolver, LoadProductJob],
+  controllers: [JobsController],
   exports: [],
 })
 export class JobsModule {}
